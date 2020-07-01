@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        SWM s = new SWM();
+        int[] a = {4,3,1,2,5,3,4,7,1,9};
+        int[] res = s.maxSlidingNumber(a, 4);
+        for (int i: res) {
+            System.out.print(i + " ");
+        }
+    }
+
+    static class SWM {
+        public int[] maxSlidingNumber(int[] a, int k){
+            int len = a.length;
+            if (len <= 1) return a;
+            Deque<Integer> dq = new LinkedList<>();
+            int[] ans = new int[len-k+1];
+
+            int i = 0;
+            for (; i<k; i++){
+                while (!dq.isEmpty() && a[dq.peekLast()] <= a[i]){
+                    dq.removeLast();
+                }
+                dq.addLast(i);
+            }
+            System.out.println(i);
+
+            for (; i<len; i++){
+                ans[i-k] = a[dq.peekFirst()];
+
+                while (!dq.isEmpty() && dq.peekFirst() <= i-k){
+                    dq.removeFirst();
+                }
+
+                while (!dq.isEmpty() && a[dq.peekLast()] <= a[i]){
+                    dq.removeLast();
+                }
+                dq.addLast(i);
+             }
+            ans[i-k] = a[dq.peekFirst()];
+            return ans;
+        }
+    }
+}
