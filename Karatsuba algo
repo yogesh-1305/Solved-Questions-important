@@ -1,0 +1,50 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ BINARY INPUT OF TWO NUMBERS -> CONVERT THEM TO DECIMAL -> OUTPUT THEIR PRODUCT.  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public class Main {
+
+    public static void main(String[] args) {
+
+       Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter first binary number: ");
+        String first = scanner.nextLine();
+
+        System.out.print("Enter second binary number: ");
+        String second = scanner.nextLine();
+
+//        System.out.println(Integer.parseInt(first,2));
+//        System.out.println(Integer.parseInt(second,2));
+
+        int result = Integer.parseInt(first,2) * Integer.parseInt(second,2);
+
+        System.out.println("result: " + result);
+    }
+}
+
+
+// ALTERNATE (LOGICAL) METHOD /////////////////////////////////////////
+
+public class Main {
+
+    public int convertToDecimal(int binaryNumber){
+        int binary = 110;
+        int pow = 0, decimal = 0;
+        while (true){
+            if (binary == 0){
+                break;
+            }else {
+                int temp = binary % 10;
+                decimal += (int) (temp * Math.pow(2,pow));
+                binary = binary / 10;
+                pow++;
+            }
+        }
+        return decimal;
+    }
+
+    public static void main(String[] args) {
+     Main task = new Main();
+     int number1 = task.convertToDecimal(1011);
+     int number2 = task.convertToDecimal(1010);
+     System.out.println(number1 * number2);
+    }
