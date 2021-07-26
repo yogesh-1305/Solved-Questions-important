@@ -1,4 +1,4 @@
 *.jar
 *.class
-/.vscode/
-/META-INF/
+./.vscode/
+./META-INF/
