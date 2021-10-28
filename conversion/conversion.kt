@@ -13,6 +13,15 @@ fun getBinary(num: Int): String {
     return binaryString.reverse().toString()
 }
 
+// another approach decimal to binary
+fun main(args: Array<String>) {
+    val num = 19
+    
+    // converting decimal to binary
+    val binary = Integer.toBinaryString(num)
+    println("$num in decimal = $binary in binary")
+}
+
 // convery binary to decimal
 fun convertBinaryToDecimal(num: Long): Int {
     var num = num
